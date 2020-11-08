@@ -12,6 +12,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,Authorization");
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    res.setHeader('Content-Type', 'application/json');
 
     next();
 })
@@ -20,6 +21,7 @@ app.get("/listaCategoria", async(req, res) => {
     res.send(await categoriaControler.listaTodasCategorias())
 })
 app.post("/adicionaCategoria", async(req, res) => {
+    console.log(req)
     res.send(await categoriaControler.adicionaCategoria(req.body))
 })
 app.put("/atualizaCategoria/:id", async(req, res) => {
